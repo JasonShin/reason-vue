@@ -1,0 +1,31 @@
+bs_package_flags = -bs-package-name reason-vue
+src_root_dir = C:\Users\Shin\Desktop\reason-vue
+bsc = C:\Users\Shin\Desktop\reason-vue\node_modules\bs-platform\lib\bsc.exe
+bsdep = C:\Users\Shin\Desktop\reason-vue\node_modules\bs-platform\lib\bsb_helper.exe
+warnings = -w -30-40+6+7+27+32..39+44+45+101
+bsc_flags = -nostdlib -I "C:\Users\Shin\Desktop\reason-vue\node_modules\bs-platform\lib\ocaml" -bs-no-version-header -no-alias-deps -color always
+ppx_flags = 
+bs_package_includes = 
+bs_package_dev_includes = 
+namespace = 
+bsb_dir_group = 0
+refmt = C:\Users\Shin\Desktop\reason-vue\node_modules\bs-platform\lib\refmt3.exe
+reason_react_jsx = 
+refmt_flags = --print binary
+bsc_lib_includes = -I .\build\loaders
+rule build_ast_and_module_sets_from_re
+  command = ${bsc} -pp "${refmt} ${refmt_flags}" ${reason_react_jsx}  ${ppx_flags} ${warnings} ${bsc_flags} -c -o ${out} -bs-syntax-only -bs-binary-ast -impl ${in}
+  description = [34mBuilding[39m [2m${out}[22m
+build .\build\loaders\bundle.mlast : build_ast_and_module_sets_from_re $src_root_dir\.\build\loaders\bundle.re
+rule build_deps
+  command = ${bsdep} ${namespace} -g ${bsb_dir_group} -MD ${in}
+  description = [34mBuilding[39m [2m${out}[22m
+build .\build\loaders\bundle.mlast.d : build_deps .\build\loaders\bundle.mlast
+rule build_cmj_cmi
+  command = ${bsc} ${bs_package_flags} -bs-assume-no-mli -bs-no-builtin-ppx-ml -bs-no-implicit-include ${bs_package_includes} ${bsc_lib_includes} ${bsc_extra_includes} ${warnings} ${bsc_flags} -o ${out} -c  ${in} $postbuild
+  depfile = ${in}.d
+  description = [34mBuilding[39m [2m${out}[22m
+build .\build\loaders\bundle.cmj |  $src_root_dir\lib\js\.\build\loaders\bundle.js .\build\loaders\bundle.cmi : build_cmj_cmi .\build\loaders\bundle.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib\js\.\build\loaders
+build build.ninja : phony  ||  .\build\loaders\bundle.mlast.d
