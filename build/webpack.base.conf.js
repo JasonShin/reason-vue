@@ -39,11 +39,11 @@ module.exports = {
         loader: 'vue-loader',
         options: vueLoaderConfig
       },
-      /* {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
-      }, */
+      {
+        test: /\.re$/,
+        exclude: /node_modules/,
+        loader: 're-loader'
+      },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
@@ -81,5 +81,6 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
-  }
+  },
+  devtool: '#eval-source-map'
 }
