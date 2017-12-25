@@ -58,16 +58,32 @@ At the moment the plan / implementation is:
 
 ## How to test manually
 
-# 1. install dependencies
+### 1. install dependencies
 `npm install` or `yarn`
 
-# 2. Trigger webpack build and test re-loader
+### 2. Trigger webpack build and test re-loader
 `npm run build` or `yarn build`
 
-# 3. Trigger bsb build
+### 3. Trigger bsb build
 `bsb -make-world`
 
 Note: I encourage `yarn build` to debug so you can physically see compiled
 JS in the build/loaders folder
 
-# 4. Modify .vue files or re-loader.js and run build again
+### 4. Modify .vue files or re-loader.js and run build again
+
+
+## Decisions
+
+### 25 / 12 / 2017
+
+- We are going to rely on bsb-cli as strictly as possible
+
+- To allow bsb-cli to compile <script>s inside .vue files, we will
+extract all scripts into .vue.re files
+
+- Then bsb-cli will be able to compile .vue.re files located under
+`build/loaders/compiled` into js files
+
+- Once bsb compilation is complete without any errors, it will pipe the resulted files down to vue-loader for final bundling
+
