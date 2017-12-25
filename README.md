@@ -22,8 +22,10 @@ webpack-dev-server and standard webpack build task
 
 I wasn't able to find how to compile reasonml on the fly using bsb cli.
 At the moment the plan / implementation is:
+
   a) receive reasonml code in the re-loader as source variable, which may
   look like
+
   ```
   /* code is coming from App.vue <script lang='re'> */
   let ageAndName = (24, "Lil' Reason");
@@ -32,8 +34,11 @@ At the moment the plan / implementation is:
   ```
 
   b) Write above input into a bundle file called bundle.re
+
   c) cd into `build/loaders/`
+
   d) make sure bsconfig.json file exists
+
   ```
   {
     "name" : "reason-vue",
@@ -42,9 +47,13 @@ At the moment the plan / implementation is:
     "bsc-flags": ["-bs-no-version-header"]
   }
   ```
+
   e) run `bsb -make-world`
+
   f) see bsb cli compiles `bundle.re` in the `lib` folder
+
   h) `fs.readFileSync` the file `build/loaders/lib/js/bundle.js` and
+
   return it inside default exported function of re-loader.js
 
 ## How to test
