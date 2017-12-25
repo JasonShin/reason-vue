@@ -4,7 +4,7 @@
   an issue! */
 {
   "name" : "reason-vue",
-  "sources": "./build/loaders",
+  "sources": "./src",
   "refmt": 3,
   "bsc-flags": ["-bs-no-version-header"]
 }
