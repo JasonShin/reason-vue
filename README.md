@@ -56,16 +56,18 @@ At the moment the plan / implementation is:
 
   return it inside default exported function of re-loader.js
 
-## How to test
+## How to test manually
 
-``` bash
 # 1. install dependencies
 `npm install` or `yarn`
 
 # 2. Trigger webpack build and test re-loader
 `npm run build` or `yarn build`
 
+# 3. Trigger bsb build
+`bsb -make-world`
+
 Note: I encourage `yarn build` to debug so you can physically see compiled
 JS in the build/loaders folder
 
-# 3. Modify .vue files or re-loader.js and run build again
+# 4. Modify .vue files or re-loader.js and run build again
