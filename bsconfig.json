@@ -4,7 +4,15 @@
   an issue! */
 {
   "name" : "reason-vue",
-  "sources": "./src",
+  "sources": {
+    "dir": "src",
+    "subdirs": true
+  },
+  "package-specs": {
+    "module": "commonjs",
+    "in-source": true
+  },
   "refmt": 3,
-  "bsc-flags": ["-bs-no-version-header"]
+  "bsc-flags": ["-bs-no-version-header"],
+  "suffix": ".bs.js"
 }

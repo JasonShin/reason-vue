@@ -2,7 +2,8 @@
   "name": "reason-vue",
   "sources": [
     {
-      "dir": "compiled/src"
+      "dir": "compiled/src",
+      "subdirs": true
     }
   ],
   "refmt": 3,

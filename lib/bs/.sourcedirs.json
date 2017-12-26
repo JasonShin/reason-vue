@@ -1,1 +1,1 @@
-{ "dirs" : [ ".\\src" ] , "generated" : [] }
+{ "dirs" : [ "src" , "src\\components" , "src\\assets" ] , "generated" : [] }

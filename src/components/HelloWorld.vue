@@ -20,19 +20,18 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'HelloWorld',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
-}
+<script lang="re">
+  let score: int = 11;
+  let ageAndName = (32, "Lil' Reason");
+  let my3dCoordinates = (99.0, 30.5, 100.0);
+  Js.log(my3dCoordinates);
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.test {
+  background-color: red;
+}
 h1, h2 {
   font-weight: normal;
 }

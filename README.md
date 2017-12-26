@@ -87,3 +87,13 @@ extract all scripts into .vue.re files
 
 - Once bsb compilation is complete without any errors, it will pipe the resulted files down to vue-loader for final bundling
 
+
+### 26 / 12 / 2017
+
+- Experiment what happens when you run bsb -make-world against raw .re files
+
+- Find out how and when to sync files in Webpack
+
+- Run BSB on synced folder
+
+- Iteratively resolve any dependencies and use addDependency
