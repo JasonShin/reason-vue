@@ -1,3 +1,5 @@
+<p align="center"><img width="200" src="https://imgur.com/6TpYmIv" alt="Reason Vue logo"></p>
+
 # reason-vue
 
 > Vue.js fueled by the power of reasonml
