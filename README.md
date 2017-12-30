@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://imgur.com/6TpYmIv"><img src="https://i.imgur.com/6TpYmIv.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/6TpYmIv"><img width="200" src="https://i.imgur.com/6TpYmIv.png" title="source: imgur.com" /></a>
 </p>
 
 # reason-vue
