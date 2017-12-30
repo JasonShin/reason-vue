@@ -1,2 +1,22 @@
+'use strict';
 
-let score:int=11;let ageAndName=(32,"Lil' Reason");let my3dCoordinates=(99.0,30.5,100.0);Js.log(my3dCoordinates);
+
+var my3dCoordinates = /* tuple */[
+  99.0,
+  30.5,
+  100.0
+];
+
+console.log(my3dCoordinates);
+
+var score = 11;
+
+var ageAndName = /* tuple */[
+  32,
+  "Lil' Reason"
+];
+
+exports.score           = score;
+exports.ageAndName      = ageAndName;
+exports.my3dCoordinates = my3dCoordinates;
+/*  Not a pure module */

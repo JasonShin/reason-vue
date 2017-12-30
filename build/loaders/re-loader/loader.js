@@ -43,7 +43,7 @@ const getFiles = ({ cloneFullPath }) =>
       if (err) {
         return rej(err)
       }
-      res({ files, cloneFullPath })
+      res({ files })
     })
   }
 )
@@ -55,6 +55,7 @@ const getFiles = ({ cloneFullPath }) =>
  * @param cb
  */
 const syncFiles = ({srcDir, cloneDir, cloneFullPath}) => new Future((rej, res) => {
+  console.log('syncing files!')
   exec(`sync-files ${srcDir} ${cloneFullPath}`, (err) => {
     if (err) {
       rej(err)
@@ -63,9 +64,7 @@ const syncFiles = ({srcDir, cloneDir, cloneFullPath}) => new Future((rej, res) =
   })
 })
 
-
 /**
- * TODO, Fix this, refactor it using fluture
  * @param files
  * @param cb
  * @returns {Promise.<*[]>}
@@ -73,18 +72,17 @@ const syncFiles = ({srcDir, cloneDir, cloneFullPath}) => new Future((rej, res) =
 const extractScripts = ({ files }) =>
   new Future((rej, res) => {
     const reFiles = files.filter(x => x.match(/\.vue$/g))
-    console.log('refiles ', files)
     const futures = reFiles.map((f) =>
       new Future((rej2, res2) => {
         const writeJS = R.compose(
           // 1. Extract script section from content
-          // 2. Parse given file path of .vue to .js
-          // 3. Write the extracted js to new .js path
+          // 2. Parse given file path of .vue to .re
+          // 3. Write the extracted reasonml to new .re path
           R.chain(({ filePath, content }) =>
             new Future((rej3, res3) => {
               const script = utils.getScript(content)
-              const jsPath = utils.getJsFilePath(filePath)
-              fs.writeFile(jsPath, script, (err) => {
+              const rePath = utils.getFilePath(filePath, '.re')
+              fs.writeFile(rePath, script, (err) => {
                 if (err) {
                   return rej3(err)
                 }
@@ -112,6 +110,27 @@ const extractScripts = ({ files }) =>
   }
 )
 
+const executeBSB = () =>
+  new Future((rej, res) => {
+    console.log('exec!! ', bsb)
+    execSync(bsb, { cwd: __dirname })
+    res(null)
+  })
+
+const writeConfig = ({ bsconfig }) =>
+  new Future((rej, res) => {
+    fs.outputJson(
+      path.join(__dirname, 'bsconfig.json'),
+      bsconfig,
+      (err) => {
+        console.log('write config ', err)
+        if (err) {
+          rej(err)
+        }
+        res(null)
+      }
+    )
+  })
 
 
 /**
@@ -138,12 +157,16 @@ module.exports = function(source, map) {
       {
         dir: cloneDir,
         subdirs: true
-      }
+      },
     ],
+    'package-specs': {
+      module: 'commonjs',
+      'in-source': true
+    },
     refmt: 3,
     "bsc-flags": ["-bs-no-version-header"]
   }
-
+  console.log('checking clone fullpath ', cloneFullPath)
   // Tasks
   /* syncFiles(srcDir, cloneFullPath, () => {
     utils.getFiles(cloneFullPath, (err, files) => {
@@ -163,10 +186,12 @@ module.exports = function(source, map) {
     })
   }) */
   R.compose(
+    R.chain(executeBSB),
+    R.chain(() => writeConfig({ bsconfig })),
     R.chain(extractScripts),
-    R.chain(getFiles),
-    syncFiles
-  )({ srcDir, cloneDir, cloneFullPath })
+    R.chain(() => getFiles({ cloneFullPath })),
+    () => syncFiles({srcDir, cloneDir, cloneFullPath})
+  )()
     .fork(
       console.error,
       console.log

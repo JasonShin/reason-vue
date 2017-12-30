@@ -26,13 +26,14 @@ const getScript = (strContent) => {
 /**
  * Replaces any file extension to .js
  * @param filePath
+ * @param ext
  */
-const getJsFilePath = (filePath) => {
-  return filePath.replace(/\.\w+$/g, '.js')
+const getFilePath = (filePath, ext) => {
+  return filePath.replace(/\.\w+$/g, ext)
 }
 
 module.exports = {
   platform,
   getScript,
-  getJsFilePath
+  getFilePath
 }

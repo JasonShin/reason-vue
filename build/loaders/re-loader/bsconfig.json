@@ -6,6 +6,10 @@
       "subdirs": true
     }
   ],
+  "package-specs": {
+    "module": "commonjs",
+    "in-source": true
+  },
   "refmt": 3,
   "bsc-flags": [
     "-bs-no-version-header"
