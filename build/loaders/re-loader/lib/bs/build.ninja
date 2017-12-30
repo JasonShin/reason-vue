@@ -1,9 +1,9 @@
 bs_package_flags = -bs-package-name reason-vue
-src_root_dir = /Users/jasons/Desktop/reason-vue/build/loaders/re-loader
-bsc = /Users/jasons/Desktop/reason-vue/node_modules/bs-platform/lib/bsc.exe
-bsdep = /Users/jasons/Desktop/reason-vue/node_modules/bs-platform/lib/bsb_helper.exe
+src_root_dir = C:\Users\Shin\Desktop\reason-vue\build\loaders\re-loader
+bsc = C:\Users\Shin\Desktop\reason-vue\node_modules\bs-platform\lib\bsc.exe
+bsdep = C:\Users\Shin\Desktop\reason-vue\node_modules\bs-platform\lib\bsb_helper.exe
 warnings = -w -30-40+6+7+27+32..39+44+45+101
-bsc_flags = -nostdlib -I '/Users/jasons/Desktop/reason-vue/node_modules/bs-platform/lib/ocaml' -bs-no-version-header -no-alias-deps -color always
+bsc_flags = -nostdlib -I "C:\Users\Shin\Desktop\reason-vue\node_modules\bs-platform\lib\ocaml" -bs-no-version-header -no-alias-deps -color always
 ppx_flags = 
 bs_package_includes = 
 bs_package_dev_includes = 

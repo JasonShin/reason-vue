@@ -1,4 +1,6 @@
 const os = require('os')
+const cheerio = require('cheerio')
+const jsmin = require('jsmin').jsmin
 
 function platform() /*: 'darwin' | 'linux' | 'wsl' | null */ {
   const isWSL = () => {
@@ -14,6 +16,23 @@ function platform() /*: 'darwin' | 'linux' | 'wsl' | null */ {
   return null
 }
 
+
+const getScript = (strContent) => {
+  const $ = cheerio.load(strContent)
+  const script = $('script').html()
+  return jsmin(script)
+}
+
+/**
+ * Replaces any file extension to .js
+ * @param filePath
+ */
+const getJsFilePath = (filePath) => {
+  return filePath.replace(/\.\w+$/g, '.js')
+}
+
 module.exports = {
-  platform
+  platform,
+  getScript,
+  getJsFilePath
 }
