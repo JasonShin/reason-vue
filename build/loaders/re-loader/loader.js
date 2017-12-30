@@ -55,7 +55,6 @@ const getFiles = ({ cloneFullPath }) =>
  * @param cb
  */
 const syncFiles = ({srcDir, cloneDir, cloneFullPath}) => new Future((rej, res) => {
-  console.log('syncing files!')
   exec(`sync-files ${srcDir} ${cloneFullPath}`, (err) => {
     if (err) {
       rej(err)
@@ -112,7 +111,6 @@ const extractScripts = ({ files }) =>
 
 const executeBSB = () =>
   new Future((rej, res) => {
-    console.log('exec!! ', bsb)
     execSync(bsb, { cwd: __dirname })
     res(null)
   })
@@ -123,7 +121,6 @@ const writeConfig = ({ bsconfig }) =>
       path.join(__dirname, 'bsconfig.json'),
       bsconfig,
       (err) => {
-        console.log('write config ', err)
         if (err) {
           rej(err)
         }
@@ -144,6 +141,7 @@ const writeConfig = ({ bsconfig }) =>
 module.exports = function(source, map) {
   // Webpack inits
   this.cacheable && this.cacheable()
+  const callback = this.async()
 
   // Constants
   const name = map.sources[0]
@@ -175,7 +173,10 @@ module.exports = function(source, map) {
   )()
     .fork(
       console.error,
-      console.log
+      (results) => {
+        console.log(results)
+        callback(results)
+      }
     )
 
 }
