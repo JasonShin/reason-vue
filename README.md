@@ -1,4 +1,6 @@
-<p align="center"><img width="200" src="https://imgur.com/6TpYmIv" alt="Reason Vue logo"></p>
+<p align="center">
+<a href="https://imgur.com/6TpYmIv"><img src="https://i.imgur.com/6TpYmIv.png" title="source: imgur.com" /></a>
+</p>
 
 # reason-vue
 
