@@ -4,6 +4,7 @@ const execSync = require('child_process').execSync
 const exec = require('child_process').exec
 const appRoot = require('app-root-path')
 const recursive = require('recursive-readdir')
+const cheerio = require('cheerio')
 const utils = require('./utils')
 
 let bsbCommand
@@ -48,9 +49,40 @@ const getFiles = (cloneDir, cb) => {
   recursive(cloneDir, [], cb)
 }
 
+const getScript = (strContent) => {
+  const $ = cheerio.load(strContent)
+  return $('script').text()
+}
+
+/**
+ * Replaces any file extension to .js
+ * @param filePath
+ */
+const getJsFilePath = (filePath) => {
+  return filePath.replace(/\.\w+$/g, '.js')
+}
+
+/**
+ * TODO, Fix this, refactor it using fluture
+ * @param files
+ * @param cb
+ * @returns {Promise.<*[]>}
+ */
 const extractScripts = (files, cb) => {
-  const reFiles = files.filter(x => x.indexOf(/\.vue$/) !== -1)
-  console.log('checking re files', reFiles)
+  const reFiles = files.filter(x => x.match(/\.vue$/g))
+  const writeJsP = reFiles.map((f) => new Promise((resolve, reject) => {
+    fs.readFile(f, 'utf8', (content) => {
+      const script = getScript(content)
+      const jsPath = getJsFilePath(f)
+      fs.writeFile(jsPath, script, (err) => {
+        if (err) {
+          return reject(err)
+        }
+        resolve(null)
+      })
+    })
+  }))
+  return Promise.all(writeJsP, cb)
 }
 
 /**
