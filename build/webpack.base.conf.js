@@ -29,7 +29,7 @@ module.exports = {
   },
   resolveLoader: {
     alias: {
-      're-loader': path.resolve(__dirname, 'loaders', 're-loader.js')
+      're-loader': path.resolve(__dirname, 'loaders', 're-loader')
     }
   },
   module: {

@@ -10,7 +10,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "app-root-path": "^2.0.1",
     "bs-platform": "^2.1.0",
+    "recursive-readdir": "^2.2.1",
+    "sync-files": "^1.0.3",
     "vue": "^2.5.2"
   },
   "devDependencies": {
