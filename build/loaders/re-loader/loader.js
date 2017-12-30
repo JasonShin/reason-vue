@@ -6,6 +6,29 @@ const appRoot = require('app-root-path')
 const recursive = require('recursive-readdir')
 const utils = require('./utils')
 
+let bsbCommand
+try {
+  bsbCommand = require.resolve('bs-platform/bin/bsb.exe')
+} catch (e) {
+  bsbCommand = `bsb`
+}
+
+/**
+ * BSB command as string
+ */
+const bsb = (() => {
+  switch (utils.platform()) {
+    case 'darwin':
+      return `script -q /dev/null ${bsbCommand} -make-world -color`
+    case 'linux':
+      return `script --return -qfc "${bsbCommand} -make-world -color" /dev/null`
+    case 'wsl':
+      return `${bsbCommand} -make-world`
+    default:
+      return `${bsbCommand} -make-world`
+  }
+})()
+
 /**
  * One time command to sync files between two locations src and dest
  * @param srcDir
@@ -21,29 +44,14 @@ const syncFiles = (srcDir, cloneDir, cb) => {
  * @param cloneDir
  * @param cb
  */
-const extractScript = (cloneDir, cb) => {
+const getFiles = (cloneDir, cb) => {
   recursive(cloneDir, [], cb)
 }
 
-let bsbCommand
-try {
-  bsbCommand = require.resolve('bs-platform/bin/bsb.exe')
-} catch (e) {
-  bsbCommand = `bsb`
+const extractScripts = (files, cb) => {
+  const reFiles = files.filter(x => x.indexOf(/\.vue$/) !== -1)
+  console.log('checking re files', reFiles)
 }
-
-const bsb = (() => {
-  switch (utils.platform()) {
-    case 'darwin':
-      return `${bsbCommand} -make-world -color`
-    case 'linux':
-      return `script --return -qfc "${bsbCommand} -make-world -color" /dev/null`
-    case 'wsl':
-      return `${bsbCommand} -make-world`
-    default:
-      return `${bsbCommand} -make-world`
-  }
-})()
 
 /**
  * What needs to happen
@@ -77,10 +85,11 @@ module.exports = function(source, map) {
 
   // Tasks
   syncFiles(srcDir, cloneFullPath, () => {
-    extractScript(cloneFullPath, (err, files) => {
+    getFiles(cloneFullPath, (err, files) => {
+      extractScripts(files)
       console.log('checking file ', files, err)
       // Output .re into compiled/sourcePath<i.e. src/App.re>
-      fs.outputFileSync(path.join(__dirname, `compiled/${srcFile.replace('vue', 're')}`), source)
+      // fs.outputFileSync(path.join(__dirname, `compiled/${srcFile.replace('vue', 're')}`), source)
       // Output arbitary bsconfig and override existing one
       fs.outputJsonSync(path.join(__dirname, 'bsconfig.json'), bsconfig)
       // Execute bsb

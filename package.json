@@ -12,6 +12,9 @@
   "dependencies": {
     "app-root-path": "^2.0.1",
     "bs-platform": "^2.1.0",
+    "cheerio": "^1.0.0-rc.2",
+    "fluture": "^7.2.2",
+    "ramda": "^0.25.0",
     "recursive-readdir": "^2.2.1",
     "sync-files": "^1.0.3",
     "vue": "^2.5.2"
