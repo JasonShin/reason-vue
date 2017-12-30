@@ -12,3 +12,13 @@
 53	62	1514591293	compiled/src/App.mlast.d	9598155fc2317709
 0	64	1514591648	compiled/src/App.mlast	aa8428da9409ed03
 64	73	1514591648	compiled/src/App.mlast.d	9598155fc2317709
+0	42	1514594697	src-cloned/App.mlast	8e8a928842cfebd7
+1	43	1514594697	src-cloned/components/HelloWorld.mlast	37af50c4c01c151b
+43	50	1514594697	src-cloned/App.mlast.d	f1d64059737211bc
+43	50	1514594697	src-cloned/components/HelloWorld.mlast.d	ce4479ac31fc4c4e
+0	13	1514594697	src-cloned/components/HelloWorld.cmj	352b53bd66775f5a
+0	13	1514594697	/Users/jasons/Desktop/reason-vue/build/loaders/re-loader/lib/js/src-cloned/components/HelloWorld.js	352b53bd66775f5a
+0	13	1514594697	src-cloned/components/HelloWorld.cmi	352b53bd66775f5a
+13	23	1514594697	src-cloned/App.cmj	d26ffcfa25769b65
+13	23	1514594697	/Users/jasons/Desktop/reason-vue/build/loaders/re-loader/lib/js/src-cloned/App.js	d26ffcfa25769b65
+13	23	1514594697	src-cloned/App.cmi	d26ffcfa25769b65

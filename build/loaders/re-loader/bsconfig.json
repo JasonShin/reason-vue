@@ -2,7 +2,7 @@
   "name": "reason-vue",
   "sources": [
     {
-      "dir": "compiled/src",
+      "dir": "src-cloned",
       "subdirs": true
     }
   ],
