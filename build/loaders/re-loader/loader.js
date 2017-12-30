@@ -166,25 +166,6 @@ module.exports = function(source, map) {
     refmt: 3,
     "bsc-flags": ["-bs-no-version-header"]
   }
-  console.log('checking clone fullpath ', cloneFullPath)
-  // Tasks
-  /* syncFiles(srcDir, cloneFullPath, () => {
-    utils.getFiles(cloneFullPath, (err, files) => {
-      extractScripts(files).then(() => {
-        console.log('checking file ', files, err)
-        // Output .re into compiled/sourcePath<i.e. src/App.re>
-        // fs.outputFileSync(path.join(__dirname, `compiled/${srcFile.replace('vue', 're')}`), source)
-        // Output arbitary bsconfig and override existing one
-        fs.outputJsonSync(path.join(__dirname, 'bsconfig.json'), bsconfig)
-        // Execute bsb
-        execSync(bsb, { cwd: __dirname })
-        // Return compiled js under lib/js/compiled
-        const result = fs.readFileSync(path.join(__dirname, `lib/js/compiled/${sourcePath.replace('vue', 'js')}`), 'utf8')
-        return result
-      })
-
-    })
-  }) */
   R.compose(
     R.chain(executeBSB),
     R.chain(() => writeConfig({ bsconfig })),
