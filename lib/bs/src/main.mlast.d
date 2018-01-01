@@ -1,0 +1,1 @@
+src/main.cmj : src/vue.cmj
