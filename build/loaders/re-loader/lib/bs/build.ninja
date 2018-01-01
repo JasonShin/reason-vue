@@ -1,7 +1,7 @@
 bs_package_flags = -bs-package-name reason-vue
 src_root_dir = C:\Users\Shin\Desktop\reason-vue\build\loaders\re-loader
-bsc = C:\Users\Shin\Desktop\reason-vue\node_modules\bs-platform\lib\bsc.exe
-bsdep = C:\Users\Shin\Desktop\reason-vue\node_modules\bs-platform\lib\bsb_helper.exe
+bsc = C:\Users\Shin\AppData\Roaming\nvm\v7.7.3\node_modules\bs-platform\lib\bsc.exe
+bsdep = C:\Users\Shin\AppData\Roaming\nvm\v7.7.3\node_modules\bs-platform\lib\bsb_helper.exe
 warnings = -w -30-40+6+7+27+32..39+44+45+101
 bsc_flags = -nostdlib -I "C:\Users\Shin\Desktop\reason-vue\node_modules\bs-platform\lib\ocaml" -bs-no-version-header -no-alias-deps -color always
 ppx_flags = 
@@ -9,7 +9,7 @@ bs_package_includes =
 bs_package_dev_includes = 
 namespace = 
 bsb_dir_group = 0
-refmt = C:\Users\Shin\Desktop\reason-vue\node_modules\bs-platform\lib\refmt3.exe
+refmt = C:\Users\Shin\AppData\Roaming\nvm\v7.7.3\node_modules\bs-platform\lib\refmt3.exe
 reason_react_jsx = 
 refmt_flags = --print binary
 bsc_lib_includes = -I src-cloned\components -I src-cloned
@@ -28,6 +28,11 @@ rule build_cmj_cmi
 build src-cloned\App.cmj |  $src_root_dir\src-cloned\App.js src-cloned\App.cmi : build_cmj_cmi src-cloned\App.mlast
   bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
   bs_package_flags = $bs_package_flags  -bs-package-output commonjs:src-cloned
+build src-cloned\vue.mlast : build_ast_and_module_sets_from_re $src_root_dir\src-cloned\vue.re
+build src-cloned\vue.mlast.d : build_deps src-cloned\vue.mlast
+build src-cloned\vue.cmj |  $src_root_dir\src-cloned\vue.js src-cloned\vue.cmi : build_cmj_cmi src-cloned\vue.mlast
+  bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:src-cloned
 build src-cloned\main.mlast : build_ast_and_module_sets_from_re $src_root_dir\src-cloned\main.re
 build src-cloned\main.mlast.d : build_deps src-cloned\main.mlast
 build src-cloned\main.cmj |  $src_root_dir\src-cloned\main.js src-cloned\main.cmi : build_cmj_cmi src-cloned\main.mlast
@@ -38,4 +43,4 @@ build src-cloned\components\HelloWorld.mlast.d : build_deps src-cloned\component
 build src-cloned\components\HelloWorld.cmj |  $src_root_dir\src-cloned\components\HelloWorld.js src-cloned\components\HelloWorld.cmi : build_cmj_cmi src-cloned\components\HelloWorld.mlast
   bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
   bs_package_flags = $bs_package_flags  -bs-package-output commonjs:src-cloned\components
-build build.ninja : phony  ||  src-cloned\components\HelloWorld.mlast.d src-cloned\main.mlast.d src-cloned\App.mlast.d
+build build.ninja : phony  ||  src-cloned\components\HelloWorld.mlast.d src-cloned\main.mlast.d src-cloned\vue.mlast.d src-cloned\App.mlast.d

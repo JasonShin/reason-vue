@@ -6,7 +6,6 @@ type vue;
 type vm;
 
 /* INSTANCE METHODS / LIFECYCLE */
-/* @TODO pull this in from bs-web-api */
 type htmlElement;
 
 type el =

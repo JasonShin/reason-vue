@@ -1,5 +1,5 @@
 ####{BSB GENERATED: NO EDIT
-FLG -ppx C:\Users\Shin\Desktop\reason-vue\node_modules\bs-platform\lib\bsppx.exe
+FLG -ppx C:\Users\Shin\AppData\Roaming\nvm\v7.7.3\node_modules\bs-platform\lib\bsppx.exe
 S C:\Users\Shin\Desktop\reason-vue\node_modules\bs-platform\lib\ocaml
 B C:\Users\Shin\Desktop\reason-vue\node_modules\bs-platform\lib\ocaml
 FLG -nostdlib -no-alias-deps -color always

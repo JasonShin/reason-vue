@@ -178,9 +178,10 @@ module.exports = function(source, map) {
     () => syncFiles({srcDir, cloneDir, cloneFullPath})
   )()
     .fork(
-      console.error,
+      (err) => {
+        callback(err)
+      },
       (results) => {
-        console.log(results)
         callback(results)
       }
     )
