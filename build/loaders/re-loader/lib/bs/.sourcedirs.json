@@ -1,1 +1,1 @@
-{ "dirs" : [ "src-cloned" , "src-cloned/assets" , "src-cloned/components" ] , "generated" : [] }
+{ "dirs" : [ "src-cloned" , "src-cloned\\components" , "src-cloned\\assets" ] , "generated" : [] }

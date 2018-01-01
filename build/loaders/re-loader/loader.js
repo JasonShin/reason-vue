@@ -111,8 +111,12 @@ const extractScripts = ({ files }) =>
 
 const executeBSB = () =>
   new Future((rej, res) => {
-    execSync(bsb, { cwd: __dirname })
-    res(null)
+    exec(bsb, { cwd: __dirname }, (err) => {
+      if (err) {
+        rej(err)
+      }
+      res(null)
+    })
   })
 
 const writeConfig = ({ bsconfig }) =>
@@ -140,13 +144,14 @@ const writeConfig = ({ bsconfig }) =>
 
 module.exports = function(source, map) {
   // Webpack inits
+  console.log('source ', source)
+  console.log('map ', map)
+  console.log(this.context)
   this.cacheable && this.cacheable()
   const callback = this.async()
 
   // Constants
-  const name = map.sources[0]
-  const srcDir = `${appRoot}/${map.sourceRoot}`
-  const srcFile = `${srcDir}/${name}`
+  const srcDir = this.context
   const cloneDir = 'src-cloned'
   const cloneFullPath = path.join(__dirname, cloneDir)
   const bsconfig = {
