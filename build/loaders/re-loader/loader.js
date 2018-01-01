@@ -166,7 +166,8 @@ module.exports = function(source, map) {
       module: 'commonjs',
       'in-source': true
     },
-    refmt: 3,
+    // TODO: Find why refmt: 3 causes an error
+    // refmt: 3,
     "bsc-flags": ["-bs-no-version-header"]
   }
   R.compose(
