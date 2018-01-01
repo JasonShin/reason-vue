@@ -27,7 +27,7 @@ webpack-dev-server and standard webpack build task
 #### build
 
   a) Clone project_root/src into __dirname/src-cloned
- 
+
   Why do we need this? By doing this, we do not clutter original src folder with .re and .bs.js mess
 
   b) Extract <script type='re'> sections from each vue file and write them into corresponding .bs.js files

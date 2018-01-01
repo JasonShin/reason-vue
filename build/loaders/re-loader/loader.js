@@ -170,6 +170,7 @@ module.exports = function(source, map) {
     "bsc-flags": ["-bs-no-version-header"]
   }
   R.compose(
+    R.chain(() => getFiles({ cloneFullPath })),
     R.chain(executeBSB),
     R.chain(() => writeConfig({ bsconfig })),
     R.chain(extractScripts),
