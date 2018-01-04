@@ -1,9 +1,5 @@
 open Vue;
 
-Config.setIgnoredElements' vue [| "custom-component" |];
-Config.setDevtools' vue Js.true_;
-Config.setProductionTip' vue Js.false_;
-
 let data = {
   "name": "Brandon",
   "age": 24,
@@ -12,13 +8,15 @@ let data = {
 
 let props = [|"foo"|];
 
+let el = Selector("#test");
+
+let template = Template("<div>");
+
 let definition = makeDefinition
   data::data
   props::props
+  template::template
+  el::el
 ();
 
 let vm = createInstance definition;
-
-let d = getInstanceData vm;
-let p = getInstanceProps vm;
-let o = getInstanceOptions vm;

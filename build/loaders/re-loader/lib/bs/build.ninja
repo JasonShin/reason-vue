@@ -28,9 +28,9 @@ rule build_cmj_cmi
 build src-cloned\App.cmj |  $src_root_dir\src-cloned\App.js src-cloned\App.cmi : build_cmj_cmi src-cloned\App.mlast
   bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
   bs_package_flags = $bs_package_flags  -bs-package-output commonjs:src-cloned
-build src-cloned\vue.mlast : build_ast_and_module_sets_from_re $src_root_dir\src-cloned\vue.re
-build src-cloned\vue.mlast.d : build_deps src-cloned\vue.mlast
-build src-cloned\vue.cmj |  $src_root_dir\src-cloned\vue.js src-cloned\vue.cmi : build_cmj_cmi src-cloned\vue.mlast
+build src-cloned\Vue.mlast : build_ast_and_module_sets_from_re $src_root_dir\src-cloned\Vue.re
+build src-cloned\Vue.mlast.d : build_deps src-cloned\Vue.mlast
+build src-cloned\Vue.cmj |  $src_root_dir\src-cloned\Vue.js src-cloned\Vue.cmi : build_cmj_cmi src-cloned\Vue.mlast
   bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
   bs_package_flags = $bs_package_flags  -bs-package-output commonjs:src-cloned
 build src-cloned\main.mlast : build_ast_and_module_sets_from_re $src_root_dir\src-cloned\main.re
@@ -43,4 +43,4 @@ build src-cloned\components\HelloWorld.mlast.d : build_deps src-cloned\component
 build src-cloned\components\HelloWorld.cmj |  $src_root_dir\src-cloned\components\HelloWorld.js src-cloned\components\HelloWorld.cmi : build_cmj_cmi src-cloned\components\HelloWorld.mlast
   bsc_flags = $bsc_flags -bs-re-out -bs-super-errors
   bs_package_flags = $bs_package_flags  -bs-package-output commonjs:src-cloned\components
-build build.ninja : phony  ||  src-cloned\components\HelloWorld.mlast.d src-cloned\main.mlast.d src-cloned\vue.mlast.d src-cloned\App.mlast.d
+build build.ninja : phony  ||  src-cloned\components\HelloWorld.mlast.d src-cloned\main.mlast.d src-cloned\Vue.mlast.d src-cloned\App.mlast.d

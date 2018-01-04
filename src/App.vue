@@ -10,6 +10,7 @@
   let ageAndName = (24, "Lil' Reason");
   let my3dCoordinates = (20.0, 30.5, 100.0);
   Js.log(HelloWorld.score);
+  
 </script>
 
 <style>

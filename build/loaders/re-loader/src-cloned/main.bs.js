@@ -1,13 +1,7 @@
 'use strict';
 
-var Vue   = require("./vue.bs.js");
-var Vue$1 = require("vue");
-
-Vue$1.config.ignoredElements = /* array */["custom-component"];
-
-Vue$1.config.devtools = true;
-
-Vue$1.config.productionTip = false;
+var Vue   = require("./Vue.bs.js");
+var Block = require("bs-platform/lib/js/block.js");
 
 var data = {
   name: "Brandon",
@@ -17,24 +11,23 @@ var data = {
 
 var props = /* array */["foo"];
 
+var el = /* Selector */Block.__(0, ["#test"]);
+
+var template = /* Template */["<div>"];
+
 var definition = {
   props: props,
-  data: data
+  data: data,
+  template: template,
+  el: el
 };
 
 var vm = Vue.createInstance(definition);
 
-var d = vm.$props;
-
-var p = vm.$props;
-
-var o = vm.$options;
-
 exports.data       = data;
 exports.props      = props;
+exports.el         = el;
+exports.template   = template;
 exports.definition = definition;
 exports.vm         = vm;
-exports.d          = d;
-exports.p          = p;
-exports.o          = o;
-/*  Not a pure module */
+/* vm Not a pure module */
