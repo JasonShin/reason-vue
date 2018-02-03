@@ -20,13 +20,13 @@ module.exports = {
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
   },
-  resolve: {
+  /* resolve: {
     extensions: ['.js', '.vue', '.json', '.re'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
     }
-  },
+  }, */
   resolveLoader: {
     alias: {
       're-loader': path.resolve(__dirname, 'loaders', 're-loader')

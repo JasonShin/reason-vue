@@ -47,3 +47,6 @@ let make' ::props=None () => {
 };
 
 let createInstance definition => create vue definition;
+
+type store = {. "getDate": [@bs.meth] (unit => float)};
+[@bs.module] external store : store = "./store";

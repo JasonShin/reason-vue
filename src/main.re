@@ -6,7 +6,8 @@ let data = {
   "id": 1
 };
 
-let props = [|"foo"|];
+let props = [|"foozz heyheyzz"|];
+
 
 let el = Selector("#test");
 

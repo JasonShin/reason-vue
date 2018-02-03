@@ -1,0 +1,6 @@
+.nyc_output
+coverage
+lib
+node_modules
+npm-debug.log
+test/output

@@ -26,9 +26,9 @@ const bsb = (() => {
     case 'linux':
       return `script --return -qfc "${bsbCommand} -make-world -color" /dev/null`
     case 'wsl':
-      return `${bsbCommand} -make-world`
+      return `${bsbCommand} -clean-world -make-world`
     default:
-      return `${bsbCommand} -make-world`
+      return `${bsbCommand} -clean-world -make-world`
   }
 })()
 
@@ -111,10 +111,12 @@ const extractScripts = ({ files }) =>
 
 const executeBSB = () =>
   new Future((rej, res) => {
+    console.log('executing bsb')
     exec(bsb, { cwd: __dirname }, (err) => {
       if (err) {
         rej(err)
       }
+      console.log('executed bsb')
       res(null)
     })
   })
@@ -137,17 +139,15 @@ const writeConfig = ({ bsconfig }) =>
 /**
  * What needs to happen
  * 1) When any change is detected
- * @param source
- * @param map
  * @returns {*}
  */
 
-module.exports = function(source, map) {
-  // Webpack inits
-  console.log('source ', source)
-  console.log('map ', map)
-  console.log(this.context)
+module.exports = function(content) {
   this.cacheable && this.cacheable()
+  console.log('checking API contents')
+  console.log('resourcePath: ', this.resourcePath)
+  // Webpack inits
+  /* this.cacheable && this.cacheable()
   const callback = this.async()
 
   // Constants
@@ -172,7 +172,11 @@ module.exports = function(source, map) {
   }
   R.compose(
     R.chain(() => getFiles({ cloneFullPath })),
-    R.chain(executeBSB),
+    // R.chain(executeBSB),
+    (props) => {
+      console.log('finished writing config')
+      return props
+    },
     R.chain(() => writeConfig({ bsconfig })),
     R.chain(extractScripts),
     R.chain(() => getFiles({ cloneFullPath })),
@@ -185,6 +189,7 @@ module.exports = function(source, map) {
       (results) => {
         callback(results)
       }
-    )
+    )*/
+  return 'let test = "yo";'
 
 }

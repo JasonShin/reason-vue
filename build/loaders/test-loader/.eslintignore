@@ -1,0 +1,5 @@
+lib
+node_modules
+scripts
+test/output
+test/fixtures
