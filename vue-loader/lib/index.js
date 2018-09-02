@@ -67,7 +67,6 @@ module.exports = function (source) {
     sourceRoot,
     needMap: sourceMap
   })
-
   // if the query has a type field, this is a language block request
   // e.g. foo.vue?type=template&id=xxxxx
   // and we will return early
@@ -114,24 +113,20 @@ module.exports = function (source) {
     const query = `?vue&type=template${idQuery}${scopedQuery}${attrsQuery}${inheritQuery}`
     const request = templateRequest = stringifyRequest(src + query)
     templateImport = `import { render, staticRenderFns } from ${request}`
+    console.log('checking template import', templateImport);
   }
 
   // script
   let scriptImport = `var script = {}`
   if (descriptor.script) {
     const src = descriptor.script.src || resourcePath
-    console.log('checking src', src);
     const attrsQuery = attrsToQuery(descriptor.script.attrs, 'js')
-    console.log('attr', attrsQuery);
     const query = `?vue&type=script${attrsQuery}${inheritQuery}`
-    console.log('query', query);
     const request = stringifyRequest(src + query)
-    console.log('request:', request);
     scriptImport = (
       `import script from ${request}\n` +
       `export * from ${request}` // support named exports
     )
-    console.log('script import:', scriptImport);
   }
 
   // styles
@@ -191,7 +186,6 @@ var component = normalizer(
   }`
 
   code += `\nexport default component.exports`
-  // console.log(code)
   return code
 }
 

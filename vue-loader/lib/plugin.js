@@ -87,7 +87,7 @@ class VueLoaderPlugin {
         cacheIdentifier: vueLoaderUse.options.cacheIdentifier
       }
     }
-
+    console.log('checking pitcher', pitcher);
     // replace original rules
     compiler.options.module.rules = [
       pitcher,
@@ -148,7 +148,6 @@ function cloneRule (rule) {
   if (rule.oneOf) {
     res.oneOf = rule.oneOf.map(cloneRule)
   }
-
   return res
 }
 

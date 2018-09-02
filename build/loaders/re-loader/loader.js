@@ -146,6 +146,7 @@ module.exports = function(content) {
   this.cacheable && this.cacheable()
   console.log('checking API contents')
   console.log('resourcePath: ', this.resourcePath)
+  console.log('checking content', content)
   // Webpack inits
   /* this.cacheable && this.cacheable()
   const callback = this.async()
