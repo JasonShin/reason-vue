@@ -32,7 +32,7 @@ function loader(this: Webpack, contents: string) {
     callback(new Error(instanceOrError.error.message));
     return;
   }
-
+  console.log('checking the compiler instance', instanceOrError);
   return successLoader(
     this,
     contents,
