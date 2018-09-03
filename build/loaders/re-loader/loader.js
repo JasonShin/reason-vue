@@ -24,7 +24,8 @@ const bsb = (() => {
     case 'darwin':
       return `script -q /dev/null ${bsbCommand} -make-world -color`
     case 'linux':
-      return `script --return -qfc "${bsbCommand} -make-world -color" /dev/null`
+      // return `script --return -qfc "${bsbCommand} -make-world -color" /dev/null`
+      return `${bsbCommand} -clean-world -make-world`
     case 'wsl':
       return `${bsbCommand} -clean-world -make-world`
     default:
@@ -148,7 +149,7 @@ module.exports = function(content) {
   console.log('resourcePath: ', this.resourcePath)
   console.log('checking content', content)
   // Webpack inits
-  /* this.cacheable && this.cacheable()
+  this.cacheable && this.cacheable()
   const callback = this.async()
 
   // Constants
@@ -173,7 +174,7 @@ module.exports = function(content) {
   }
   R.compose(
     R.chain(() => getFiles({ cloneFullPath })),
-    // R.chain(executeBSB),
+    R.chain(executeBSB),
     (props) => {
       console.log('finished writing config')
       return props
@@ -190,7 +191,7 @@ module.exports = function(content) {
       (results) => {
         callback(results)
       }
-    )*/
+    )
   return 'let test = "yo";'
 
 }

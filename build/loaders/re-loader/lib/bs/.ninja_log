@@ -1,0 +1,16 @@
+# ninja log v5
+1	7	1535934153	src-cloned/main.mlast	d43dca55fe6988bf
+0	8	1535934153	src-cloned/App.mlast	877225f9f64c395
+1	8	1535934153	src-cloned/components/HelloWorld.mlast	a87ab2a620ca7075
+7	9	1535934153	src-cloned/main.mlast.d	59272d17d4d44912
+8	9	1535934153	src-cloned/App.mlast.d	ae839443ac36d797
+8	9	1535934153	src-cloned/components/HelloWorld.mlast.d	9ec17a2596c43921
+0	4	1535934153	src-cloned/main.cmj	d98655d79c6fd3b0
+0	4	1535934153	/home/jason/Desktop/reason-vue/build/loaders/re-loader/src-cloned/main.js	d98655d79c6fd3b0
+0	4	1535934153	src-cloned/main.cmi	d98655d79c6fd3b0
+0	4	1535934153	src-cloned/components/HelloWorld.cmj	2f37bc800f76cd72
+0	4	1535934153	/home/jason/Desktop/reason-vue/build/loaders/re-loader/src-cloned/components/HelloWorld.js	2f37bc800f76cd72
+0	4	1535934153	src-cloned/components/HelloWorld.cmi	2f37bc800f76cd72
+4	9	1535934153	src-cloned/App.cmj	ff73ac3a51651fa3
+4	9	1535934153	/home/jason/Desktop/reason-vue/build/loaders/re-loader/src-cloned/App.js	ff73ac3a51651fa3
+4	9	1535934153	src-cloned/App.cmi	ff73ac3a51651fa3

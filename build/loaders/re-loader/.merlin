@@ -1,11 +1,11 @@
 ####{BSB GENERATED: NO EDIT
-FLG -ppx C:\Users\Shin\AppData\Roaming\nvm\v7.7.3\node_modules\bs-platform\lib\bsppx.exe
-S C:\Users\Shin\Desktop\reason-vue\node_modules\bs-platform\lib\ocaml
-B C:\Users\Shin\Desktop\reason-vue\node_modules\bs-platform\lib\ocaml
-FLG -nostdlib -no-alias-deps -color always
+FLG -ppx /home/jason/Desktop/reason-vue/node_modules/bs-platform/lib/bsppx.exe
+S /home/jason/Desktop/reason-vue/node_modules/bs-platform/lib/ocaml
+B /home/jason/Desktop/reason-vue/node_modules/bs-platform/lib/ocaml
+FLG -nostdlib -color always
 FLG -w -30-40+6+7+27+32..39+44+45+101
 S src-cloned
-B lib\bs\src-cloned
-S src-cloned\components
-B lib\bs\src-cloned\components
+B lib/bs/src-cloned
+S src-cloned/components
+B lib/bs/src-cloned/components
 ####BSB GENERATED: NO EDIT}

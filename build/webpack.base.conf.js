@@ -44,6 +44,10 @@ module.exports = {
         exclude: /node_modules/,
         loader: 're-loader'
       },
+      /* {
+        test: /\.re$/,
+        loader: 'bs-loader'
+      }, */
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
